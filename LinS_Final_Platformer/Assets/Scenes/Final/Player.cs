@@ -26,13 +26,13 @@ public class Player : MonoBehaviour
     public float ladderCheckRadius = 0.2f;
     public bool isClimbing;
 
-
     //ground variables
     public LayerMask groundLayer;
     public Transform groundCheck;
 
-    //put in game manager
-    public List<GameObject> disappearingPlatforms = new List<GameObject>();
+    //have the player turn left and right
+    private bool isFacingRight = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,6 +42,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inputX > 0 && !isFacingRight)
+            Flip();
+        else if (inputX < 0 && isFacingRight)
+            Flip();
+
         if (isGrounded())
         {
             //reset jump and restore gravity when grounded
@@ -55,6 +60,14 @@ public class Player : MonoBehaviour
 
         Climbing();
 
+    }
+    void Flip()
+    {
+        //make the fire point follow the player
+        isFacingRight = !isFacingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     //fixed update is not frame dependent it runs at scheduled intervals

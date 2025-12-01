@@ -6,12 +6,16 @@ using TMPro;
 public class Continue : MonoBehaviour
 {
     [Header("Dialogue Setup")]
+    //dialogue lines inside inspector
     public TMP_Text dialogueText;
     public string[] dialogueLines;
     private int index = 0;
 
     [Header("Next Scene")]
-    public GameObject nextPanel;
+    //phone sprite and next game scene
+    public GameObject phoneSprite;
+    public GameObject dialogueBox;
+    public KingsOrder kingsOrder;
     public string nextSceneName = "GameScene";
 
     [Header("Scene Data")]
@@ -19,8 +23,9 @@ public class Continue : MonoBehaviour
     public string returnSpawnPointName;
     public string storyType;
 
+    //dialogue and panel false on start
     private bool dialogueFinished = false;
-
+    private bool panelShown = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,6 +33,15 @@ public class Continue : MonoBehaviour
     {
         //dialogue lines in order
         dialogueText.text = dialogueLines[index];
+
+        // Hide phone and panels at start
+        if (phoneSprite != null) phoneSprite.SetActive(false);
+        if (kingsOrder != null)
+        {
+            kingsOrder.HideBlackPanel();
+            kingsOrder.HideKingsOrder();
+            kingsOrder.HideHint();
+        }
     }
 
     // Update is called once per frame
@@ -38,13 +52,20 @@ public class Continue : MonoBehaviour
 
     public void Next()
     {
+        //if diaogue is not finished, continue dialogue
         if (!dialogueFinished)
         {
             ContinueDialogue();
         }
+        else if (!panelShown)
+        {
+            //show panel after dialogue finishes
+            ShowPanel();
+        }
         else
         {
-            ContinueToNext();
+            //panel already visible, go to next scene
+            LoadNextScene();
         }
     }
 
@@ -59,19 +80,34 @@ public class Continue : MonoBehaviour
         else
         {
             //or else finish dialogue is true
-                dialogueFinished = true;
+            dialogueFinished = true;
+            //show panel immediately
+            ShowPanel();
+            
         }
     }
 
-    void ContinueToNext()
+    void ShowPanel()
     {
-        //continue to panel if theres one
-        if (nextPanel != null)
+        //activate phone sprite
+        if (phoneSprite != null) phoneSprite.SetActive(true);
+
+        //activate King’s Order panel with black panel
+        if (kingsOrder != null)
         {
-            nextPanel.SetActive(true);
-            gameObject.SetActive(false);
+            //show black panel and kings order
+            kingsOrder.ShowKingsOrder();
+            Debug.Log("kings order called");
         }
 
+        //hide dialogue box
+        if (dialogueBox != null) dialogueBox.SetActive(false);
+
+        panelShown = true;
+    }
+
+    void LoadNextScene()
+    {
         //save spawn point & story type for Game Scene
         if (!string.IsNullOrEmpty(returnSpawnPointName))
         {
@@ -82,10 +118,11 @@ public class Continue : MonoBehaviour
             SceneData.storyType = storyType;
         }
 
-        //continue to next scene
+        //load the next scene
         if (!string.IsNullOrEmpty(nextSceneName))
         {
             SceneManager.LoadScene(nextSceneName);
         }
     }
+
 }

@@ -50,12 +50,12 @@ public class KingsOrder : MonoBehaviour
         {
             int count = roomLimits[room];
 
-            // Only consider the texts for this room
+            //only consider the texts for this room
             List<int> indices = new List<int>();
             for (int i = 0; i < count; i++)
                 indices.Add(startIndex + i);
 
-            // shuffle indices
+            //shuffle indices
             for (int i = 0; i < indices.Count; i++)
             {
                 int rand = Random.Range(i, indices.Count);
@@ -64,7 +64,7 @@ public class KingsOrder : MonoBehaviour
                 indices[rand] = temp;
             }
 
-            // assign randomized texts to UI elements for this room
+            //assign randomized texts to UI elements for this room
             TMP_Text[] tempTexts = new TMP_Text[count];
             for (int i = 0; i < count; i++)
             {

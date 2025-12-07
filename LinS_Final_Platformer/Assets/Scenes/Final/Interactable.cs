@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
@@ -43,6 +43,7 @@ public class Interactable : MonoBehaviour
                     selectedObjects.Remove(obj);
                     Highlight(obj, false);
                     Debug.Log("Deselected: " + obj.name);
+
                 }
                 else
                 {
@@ -61,47 +62,49 @@ public class Interactable : MonoBehaviour
         //no selections, nothing happens
         if (selectedObjects.Count == 0) return;
 
-        //press e to interact, only selected objects
-        if (Input.GetKeyDown(KeyCode.E))
+           foreach (var obj in selectedObjects)
+           {
+               //for tags named interactible only
+               if (obj.CompareTag("Interactible"))
+               {
+                   IInteractible interact = obj.GetComponent<IInteractible>();
+                   if (interact != null)
+                       interact.Interact();
+
+                   Debug.Log("Interacted:" + obj.name);
+                break;
+               }
+           }
+            
+        
+        selectedObjects.RemoveAll(obj => obj == null);
+
+    }
+    public void HandlePickup()
+    {
+        if (selectedObjects.Count == 0) return;
+
+        List<GameObject> pickedUp = new List<GameObject>();
+
+        foreach (var obj in selectedObjects)
         {
-            foreach (var obj in selectedObjects)
+            if (obj.CompareTag("Collectible"))
             {
-                //for tags named interactible only
-                if (obj.CompareTag("Interactible"))
+                ICollectible collectible = obj.GetComponent<ICollectible>();
+                if (collectible != null)
                 {
-                    IInteractible interact = obj.GetComponent<IInteractible>();
-                    if (interact != null)
-                        interact.Interact();
+                    collectible.PickUp();
+                    pickedUp.Add(obj);
+                    Debug.Log("Picked Up: " + obj.name);
+                    break;
                 }
             }
         }
 
-        //press q to pick up, only selected objects
-        if (Input.GetKeyDown(KeyCode.Q))
+        foreach (var obj in pickedUp)
         {
-            List<GameObject> pickedUp = new List<GameObject>();
-
-            foreach (var obj in selectedObjects)
-            {
-                //for tags collectible
-                if (obj.CompareTag("Collectible"))
-                {
-                    ICollectible collectible = obj.GetComponent<ICollectible>();
-                    if (collectible != null)
-                    {
-                        collectible.PickUp();
-                        //remove from selection
-                        pickedUp.Add(obj);
-                    }
-                }
-            }
-
-            //remove picked up objects from selection
-            foreach (var obj in pickedUp)
-            {
-                selectedObjects.Remove(obj);
-                Highlight(obj, false);
-            }
+            selectedObjects.Remove(obj);
+            Highlight(obj, false);
         }
     }
 

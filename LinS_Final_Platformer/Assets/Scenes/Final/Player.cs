@@ -33,11 +33,49 @@ public class Player : MonoBehaviour
     //have the player turn left and right
     private bool isFacingRight = true;
 
+    public PlayerInput playerInput;              // assign your Player Input component
+    public Interactable interactableScript;      // assign your existing Interactable script
+
+    private InputAction interactAction;
+    private InputAction pickupAction;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+
+        // Make sure playerInput & interactableScript are assigned
+        if (playerInput == null || interactableScript == null)
+        {
+            Debug.LogError("PlayerInput or InteractableScript not assigned in Inspector!");
+            return;
+        }
+
+        interactAction = playerInput.actions["Interact"];
+        pickupAction = playerInput.actions["Pickup"];
+
+        interactAction.performed += OnInteract;
+        pickupAction.performed += OnPickup;
     }
+    private void OnDestroy()
+    {
+        if (interactAction != null)
+            interactAction.performed -= OnInteract;
+
+        if (pickupAction != null)
+            pickupAction.performed -= OnPickup;
+    }
+
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        interactableScript.HandleInteraction();
+    }
+
+    private void OnPickup(InputAction.CallbackContext context)
+    {
+        interactableScript.HandlePickup();
+    }
+
 
     // Update is called once per frame
     void Update()

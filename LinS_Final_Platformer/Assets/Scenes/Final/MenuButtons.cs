@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
+    public string firstSceneName = "StoryScene"; // your first scene
     public static class SceneHistory
     {
         //save the current scene name its on
@@ -13,8 +14,25 @@ public class MenuButtons : MonoBehaviour
 
     public void PLAY()
     {
-        //after pressing play, the story scene will play
-        SceneManager.LoadScene("StoryScene");
+        // Clear PlayerPrefs
+        PlayerPrefs.DeleteAll();
+
+        // Reset static scene data
+        SceneData.spawnPoint = "";
+        SceneData.storyType = "";
+
+        // Reset other singletons if necessary
+        if (KingsOrder.Instance != null)
+        {
+            KingsOrder.Instance.currentRoom = 0;
+        }
+        if (RoundManage.Instance != null)
+        {
+            RoundManage.Instance.conditionMet = false;
+        }
+
+        // Load the first scene
+        SceneManager.LoadScene(firstSceneName);
     }
 
     public void RULES()

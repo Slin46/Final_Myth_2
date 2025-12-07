@@ -23,7 +23,7 @@ public class Interactable : MonoBehaviour
         HandleInteraction();
     }
 
-    void HandleSelection()
+    public void HandleSelection()
     {
         //when left clicking
         if (Input.GetMouseButtonDown(0))
@@ -56,7 +56,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    void HandleInteraction()
+    public void HandleInteraction()
     {
         //no selections, nothing happens
         if (selectedObjects.Count == 0) return;

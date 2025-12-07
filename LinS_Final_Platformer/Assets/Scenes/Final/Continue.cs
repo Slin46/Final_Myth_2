@@ -15,6 +15,7 @@ public class Continue : MonoBehaviour
     //phone sprite and next game scene
     public GameObject phoneSprite;
     public GameObject dialogueBox;
+    public GameObject continueArrow;
     public KingsOrder kingsOrder;
     public string nextSceneName = "GameScene";
 
@@ -27,11 +28,28 @@ public class Continue : MonoBehaviour
     private bool dialogueFinished = false;
     private bool panelShown = false;
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //dialogue lines in order
+        // Replace dialogue if storyType from SceneData exists
+        string sceneStoryType = SceneData.storyType;
+
+        if (!string.IsNullOrEmpty(sceneStoryType))
+        {
+            switch (sceneStoryType)
+            {
+                case "Success":
+                    dialogueLines = new string[] { "The King's order failed. No one died." };
+                    break;
+                case "Fail":
+                    dialogueLines = new string[] { "The King's order has been fulfilled. Someone died." };
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // Set the first line of dialogue
         dialogueText.text = dialogueLines[index];
 
         // Hide phone and panels at start
@@ -42,6 +60,7 @@ public class Continue : MonoBehaviour
             kingsOrder.HideKingsOrder();
             kingsOrder.HideHint();
         }
+
     }
 
     // Update is called once per frame
@@ -98,6 +117,9 @@ public class Continue : MonoBehaviour
             //show black panel and kings order
             kingsOrder.ShowKingsOrder();
             Debug.Log("kings order called");
+
+            if (continueArrow != null && kingsOrder.finalTestPanel != null && kingsOrder.finalTestPanel.activeSelf)
+                continueArrow.SetActive(false);
         }
 
         //hide dialogue box

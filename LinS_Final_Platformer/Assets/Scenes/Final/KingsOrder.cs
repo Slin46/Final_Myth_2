@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class KingsOrder : MonoBehaviour
 {
+    public static KingsOrder Instance;
+
     [Header("Black Panel")]
     //black panel for the kings order and hint text to lay on
     public GameObject blackPanel;
@@ -17,6 +21,8 @@ public class KingsOrder : MonoBehaviour
     public TMP_Text[] nameOrders;
     //orders per room
     public int[] roomLimits = { 4, 4, 4, 3 };
+    //the current order its on
+    public int activeOrderIndex;
 
     [Header("Hint Panel")]
     //empty parent object for the hint panel
@@ -31,61 +37,63 @@ public class KingsOrder : MonoBehaviour
     //0=1, 1=2, etc.
     public int currentRoom = 0;
 
+    public GameObject finalTestPanel;
+    public GameObject continueArrow;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //hide everything at start
+        // Load current room from PlayerPrefs
+        currentRoom = PlayerPrefs.GetInt("CurrentRoom", 0);
+
+        // Ensure it’s within bounds
+        if (currentRoom < 0)
+            currentRoom = 0;
+
+        // Hide everything at start
         HideBlackPanel();
         HideKingsOrder();
         HideHint();
 
-        RandomizeNamesPerRoom();
+        // Randomize only if we're not past last room
+        if (currentRoom < roomLimits.Length)
+            RandomizeCurrentRoomTexts();
     }
 
-    void RandomizeNamesPerRoom()
+    void RandomizeCurrentRoomTexts()
     {
+        if (currentRoom >= roomLimits.Length) return;
+
         int startIndex = 0;
+        for (int r = 0; r < currentRoom; r++)
+            startIndex += roomLimits[r];
 
-        for (int room = 0; room < roomLimits.Length; room++)
+        int count = roomLimits[currentRoom];
+
+        // Shuffle only the texts for the current room
+        List<int> indices = new List<int>();
+        for (int i = 0; i < count; i++)
+            indices.Add(startIndex + i);
+
+        for (int i = 0; i < indices.Count; i++)
         {
-            int count = roomLimits[room];
+            int rand = Random.Range(i, indices.Count);
+            int temp = indices[i];
+            indices[i] = indices[rand];
+            indices[rand] = temp;
+        }
 
-            //only consider the texts for this room
-            List<int> indices = new List<int>();
-            for (int i = 0; i < count; i++)
-                indices.Add(startIndex + i);
+        for (int i = 0; i < count; i++)
+        {
+            nameOrders[startIndex + i].text = nameOrders[indices[i]].text;
+            nameOrders[startIndex + i].gameObject.SetActive(true);
+        }
 
-            //shuffle indices
-            for (int i = 0; i < indices.Count; i++)
-            {
-                int rand = Random.Range(i, indices.Count);
-                int temp = indices[i];
-                indices[i] = indices[rand];
-                indices[rand] = temp;
-            }
-
-            //assign randomized texts to UI elements for this room
-            TMP_Text[] tempTexts = new TMP_Text[count];
-            for (int i = 0; i < count; i++)
-            {
-                tempTexts[i] = nameOrders[indices[i]];
-            }
-
-            for (int i = 0; i < count; i++)
-            {
-                nameOrders[startIndex + i].text = tempTexts[i].text;
-                // hide texts that are not in this room
-                nameOrders[startIndex + i].gameObject.SetActive(room == currentRoom);
-            }
-
-            // hide all other texts outside this room
-            for (int i = 0; i < nameOrders.Length; i++)
-            {
-                if (i < startIndex || i >= startIndex + count)
-                    nameOrders[i].gameObject.SetActive(false);
-            }
-
-            startIndex += count;
+        // hide texts not in this room
+        for (int i = 0; i < nameOrders.Length; i++)
+        {
+            if (i < startIndex || i >= startIndex + count)
+                nameOrders[i].gameObject.SetActive(false);
         }
     }
     //show the black panel
@@ -101,6 +109,17 @@ public class KingsOrder : MonoBehaviour
     }
     public void ShowKingsOrder()
     {
+        if (currentRoom >= roomLimits.Length)
+        {
+            // We're past the last room, just activate final test
+            if (finalTestPanel != null)
+                finalTestPanel.SetActive(true);
+
+            HideKingsOrder();
+            HideBlackPanel();
+            return;
+        }
+
         Debug.Log("ShowKingsOrder called");
         //show black panel, hide hint, show kings order panel
         ShowBlackPanel();
@@ -140,8 +159,6 @@ public class KingsOrder : MonoBehaviour
     //show hint for the current room
     public void ShowHint()
     {
-        //hide kings order, show black panel, show hint if condition met
-        HideKingsOrder();
         ShowBlackPanel();
 
         // Only show the TMP_Text for the current room
@@ -160,15 +177,46 @@ public class KingsOrder : MonoBehaviour
         if (hintPanel != null) hintPanel.SetActive(false);
     }
 
+    public void OnRoomEnd(bool conditionMet)
+    {
+        HideKingsOrder();
+
+        // Show hint immediately if the condition was met
+        if (conditionMet)
+            ShowHint();          // show the hint first
+            ShowKingsOrder();    // then show the King's Order
+
+        // Then proceed to the next room
+        GoToNextRoom();
+    }
+
     public void GoToNextRoom()
     {
         currentRoom++;
+
+        // If we exceed the last room, activate final test
         if (currentRoom >= roomLimits.Length)
         {
-            Debug.Log("All rooms completed");
-            //cap to last room
-            currentRoom = roomLimits.Length - 1;
+            Debug.Log("All rooms completed! Activating final test...");
+
+            if (continueArrow != null)
+            {
+                continueArrow.SetActive(false);
+            }
+
+            if (finalTestPanel != null)
+                finalTestPanel.SetActive(true);
+
+            HideKingsOrder();
+            HideBlackPanel();
+
+            // Stop further room logic
+            return;
         }
+
+        // Otherwise, randomize texts for the new room
+        RandomizeCurrentRoomTexts();
+
     }
 
 

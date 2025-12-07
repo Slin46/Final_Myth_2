@@ -8,7 +8,6 @@ public class Door : MonoBehaviour
     public string storyType;      // which dialogue to show
     public string storySceneName = "StoryScene";
     
-    public bool testMode = true;
     public bool conditionMet = false;
 
     public enum DoorType { Spawn, Transition }
@@ -25,18 +24,39 @@ public class Door : MonoBehaviour
         if (!other.CompareTag("Player")) return;
 
         // Only Transition doors trigger a scene load
-        if (doorType == DoorType.Transition && (conditionMet || testMode))
+        if (doorType == DoorType.Transition)
         {
-            Debug.Log("Player collided with transition door! Moving to story scene...");
+            // Check if condition is met from RoundManage or test mode
+            bool canOpen = (RoundManage.Instance != null && RoundManage.Instance.conditionMet);
 
-            SceneData.spawnPoint = spawnPointName;
-            SceneData.storyType = storyType;
+            if (canOpen)
+            {
+                Debug.Log("Door unlocked! Player can proceed to StoryScene.");
 
-            SceneManager.LoadScene(storySceneName);
+                // Mark the condition met in RoundManage (for message display)
+                if (RoundManage.Instance != null)
+                    RoundManage.Instance.PlayerMetCondition();
+
+                // Increment current room in PlayerPrefs for this play session
+                int nextRoom = PlayerPrefs.GetInt("CurrentRoom", 0) + 1;
+                PlayerPrefs.SetInt("CurrentRoom", nextRoom);
+                PlayerPrefs.Save();
+
+                // Pass spawn info and story type
+                SceneData.spawnPoint = spawnPointName;
+                SceneData.storyType = "Success";
+
+                // Load story scene
+                SceneManager.LoadScene(storySceneName);
+            }
+            else
+            {
+                Debug.Log("Door is locked. Condition not met yet.");
+            }
         }
         else
         {
-            Debug.Log("This door does not transition (spawn door or condition not met).");
+            Debug.Log("This door does not transition (spawn door).");
         }
 
     }

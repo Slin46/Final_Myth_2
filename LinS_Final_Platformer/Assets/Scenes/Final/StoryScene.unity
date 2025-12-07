@@ -540,6 +540,7 @@ MonoBehaviour:
   - {fileID: 1201677567}
   - {fileID: 707463197}
   roomLimits: 04000000040000000400000003000000
+  activeOrderIndex: 0
   hintPanel: {fileID: 694462500}
   hintTitle: {fileID: 1351563488}
   roomHints:
@@ -547,6 +548,8 @@ MonoBehaviour:
   - {fileID: 605630446}
   - {fileID: 33514546}
   currentRoom: 0
+  finalTestPanel: {fileID: 1014495724}
+  continueArrow: {fileID: 2102329675}
 --- !u!1 &81707530
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,55 +624,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &90318526
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 90318528}
-  - component: {fileID: 90318527}
-  m_Layer: 0
-  m_Name: RoundManage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &90318527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 90318526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33af4699191405f479ea33439d744328, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  room1Done: 0
-  room2Done: 0
-  room3Done: 0
-  room4Done: 0
-  finaltestUI: {fileID: 1014495724}
---- !u!4 &90318528
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 90318526}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 708.8934, y: 369.2388, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1462,6 +1416,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 259639729}
+  endSceneName: EndScene
+  delayBeforeScene: 2
 --- !u!1 &302433653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,6 +2590,7 @@ MonoBehaviour:
   - Cellphone rings...
   phoneSprite: {fileID: 54837499}
   dialogueBox: {fileID: 2145137718}
+  continueArrow: {fileID: 2102329675}
   kingsOrder: {fileID: 54837503}
   nextSceneName: GameScene
   returnSpawnPointName: 
@@ -4959,6 +4916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1d6f9290d543a46a8f18eeb19677df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstSceneName: StoryScene
   settingsPanel: {fileID: 1595587421}
 --- !u!114 &1030811775
 MonoBehaviour:
@@ -8650,6 +8608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1d6f9290d543a46a8f18eeb19677df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstSceneName: StoryScene
   settingsPanel: {fileID: 1595587421}
 --- !u!114 &1353169356
 MonoBehaviour:
@@ -9754,6 +9713,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1696365280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1696365282}
+  - component: {fileID: 1696365281}
+  m_Layer: 0
+  m_Name: StorySceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1696365281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696365280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f3fc8c4894fc9d478cbd8c05a60ad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 407631211}
+--- !u!4 &1696365282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696365280}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0864, y: -0.1797, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706615713
 GameObject:
   m_ObjectHideFlags: 0
@@ -10172,6 +10176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1d6f9290d543a46a8f18eeb19677df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstSceneName: StoryScene
   settingsPanel: {fileID: 1595587421}
 --- !u!1 &1764238437
 GameObject:
@@ -10448,6 +10453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1d6f9290d543a46a8f18eeb19677df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstSceneName: StoryScene
   settingsPanel: {fileID: 1595587421}
 --- !u!114 &1797084176
 MonoBehaviour:
@@ -11620,4 +11626,4 @@ SceneRoots:
   - {fileID: 81707533}
   - {fileID: 1524155382}
   - {fileID: 1555669654}
-  - {fileID: 90318528}
+  - {fileID: 1696365282}

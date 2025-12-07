@@ -8,6 +8,11 @@ public class Interactable : MonoBehaviour
     //list of all objects 
     public List<GameObject> selectedObjects = new List<GameObject>();
 
+    //assign player transform here
+    public Transform playerHoldPoint;
+    //currently held item
+    private GameObject heldItem = null;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,14 +23,15 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //call selection and interaction
+        //call selection
         HandleSelection();
-        HandleInteraction();
+
+        FollowHeldItem(playerHoldPoint);
     }
 
     public void HandleSelection()
     {
-        //when left clicking
+        //left click to select item
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -35,6 +41,7 @@ public class Interactable : MonoBehaviour
 
             GameObject obj = hit.collider.gameObject;
 
+            //can only select items tagged interactible and collectible
             if (obj.CompareTag("Interactible") || obj.CompareTag("Collectible"))
             {
                 if (selectedObjects.Contains(obj))
@@ -56,58 +63,6 @@ public class Interactable : MonoBehaviour
             }
         }
     }
-
-    public void HandleInteraction()
-    {
-        //no selections, nothing happens
-        if (selectedObjects.Count == 0) return;
-
-           foreach (var obj in selectedObjects)
-           {
-               //for tags named interactible only
-               if (obj.CompareTag("Interactible"))
-               {
-                   IInteractible interact = obj.GetComponent<IInteractible>();
-                   if (interact != null)
-                       interact.Interact();
-
-                   Debug.Log("Interacted:" + obj.name);
-                break;
-               }
-           }
-            
-        
-        selectedObjects.RemoveAll(obj => obj == null);
-
-    }
-    public void HandlePickup()
-    {
-        if (selectedObjects.Count == 0) return;
-
-        List<GameObject> pickedUp = new List<GameObject>();
-
-        foreach (var obj in selectedObjects)
-        {
-            if (obj.CompareTag("Collectible"))
-            {
-                ICollectible collectible = obj.GetComponent<ICollectible>();
-                if (collectible != null)
-                {
-                    collectible.PickUp();
-                    pickedUp.Add(obj);
-                    Debug.Log("Picked Up: " + obj.name);
-                    break;
-                }
-            }
-        }
-
-        foreach (var obj in pickedUp)
-        {
-            selectedObjects.Remove(obj);
-            Highlight(obj, false);
-        }
-    }
-
     void Highlight(GameObject obj, bool state)
     {
         if (obj == null) return;
@@ -125,6 +80,74 @@ public class Interactable : MonoBehaviour
             Debug.LogWarning("Highlight child not found on " + obj.name);
         }
     }
+    public void HandleInteraction()
+    {
+        //no selections, nothing happens
+        if (selectedObjects.Count == 0) return;
+
+           foreach (var obj in selectedObjects)
+           {
+               //for tags named interactible only
+               if (obj.CompareTag("Interactible"))
+               {
+                   IInteractible interact = obj.GetComponent<IInteractible>();
+                   if (interact != null)
+                       interact.Interact();
+
+                   Debug.Log("Interacted:" + obj.name);
+               }
+           }
+            
+        
+        selectedObjects.RemoveAll(obj => obj == null);
+
+    }
+    public void HandlePickup(Transform playerHoldPoint)
+    {
+        if (selectedObjects.Count == 0) return;
+
+        List<GameObject> pickedUp = new List<GameObject>();
+
+        // If already holding something, drop it
+        if (heldItem != null)
+        {
+            Collectible col = heldItem.GetComponent<Collectible>();
+            if (col != null)
+            {
+                col.Drop();
+            }
+            Debug.Log("Dropped: " + heldItem.name);
+            heldItem = null;
+        }
+
+        // Pick up the first selected collectible
+        foreach (var obj in selectedObjects)
+        {
+            if (obj.CompareTag("Collectible"))
+            {
+                Collectible col = obj.GetComponent<Collectible>();
+                if (col != null)
+                {
+                    heldItem = obj;
+                    col.PickUp(playerHoldPoint);
+                    Debug.Log("Picked Up: " + heldItem.name);
+                    selectedObjects.Remove(obj);
+                    Highlight(obj, false);
+                    break; // only pick up one
+                }
+            }
+        }
+
+    }
+    // Call this every frame to make held item follow the player
+    public void FollowHeldItem(Transform playerHoldPoint)
+    {
+        if (heldItem != null && playerHoldPoint != null)
+        {
+            heldItem.transform.position = playerHoldPoint.position;
+        }
+    }
+
 
 
 }

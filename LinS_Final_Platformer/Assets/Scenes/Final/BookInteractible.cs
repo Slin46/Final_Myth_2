@@ -1,27 +1,28 @@
 using UnityEngine;
 
-public class BookInteractible : MonoBehaviour
+public class BookInteractible : MonoBehaviour, IInteractible
 {
-    public GameObject keyObject; // assign in Inspector
-    public bool isCollected = false;
+    public GameObject key; // assign the key in inspector
 
     public void Interact()
     {
-        if (isCollected) return;
-
-        // Destroy the book
-        Destroy(gameObject);
-
-        if (keyObject != null)
+        if (key != null)
         {
-            // Unparent so it behaves independently
-            keyObject.transform.parent = null;
+            // Unparent the key first
+            key.transform.parent = null;
 
-            // Activate key so it can be picked up
-            keyObject.SetActive(true);
+            // Enable key if it was inactive
+            key.SetActive(true);
 
-            Debug.Log("Key revealed!");
+            // Enable physics
+            Rigidbody2D rb = key.GetComponent<Rigidbody2D>();
+
+            Debug.Log("key revealed");
         }
+
+        // Deactivate the book instead of destroying it
+        gameObject.SetActive(false);
+        Debug.Log("book deactivated");
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -34,10 +34,12 @@ public class Player : MonoBehaviour
     private bool isFacingRight = true;
 
     public PlayerInput playerInput;              // assign your Player Input component
-    public Interactable interactableScript;      // assign your existing Interactable script
+    public Interactable interactManager;      // assign your existing Interactable script
 
     private InputAction interactAction;
     private InputAction pickupAction;
+
+    public Transform playerHoldPoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -45,7 +47,7 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
 
         // Make sure playerInput & interactableScript are assigned
-        if (playerInput == null || interactableScript == null)
+        if (playerInput == null || interactManager == null)
         {
             Debug.LogError("PlayerInput or InteractableScript not assigned in Inspector!");
             return;
@@ -68,14 +70,13 @@ public class Player : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext context)
     {
-        interactableScript.HandleInteraction();
+        interactManager.HandleInteraction();
     }
 
     private void OnPickup(InputAction.CallbackContext context)
     {
-        interactableScript.HandlePickup();
+        interactManager.HandlePickup(playerHoldPoint); // pass the player’s hold point
     }
-
 
     // Update is called once per frame
     void Update()

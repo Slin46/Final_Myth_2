@@ -88,14 +88,11 @@ public class RoundManage : MonoBehaviour
     // Call this when player meets the condition (before time runs out)
     public void PlayerMetCondition()
     {
-        if (!roomActive) return;
+        roomActive = false;      // still mark room as inactive after condition met
+        conditionMet = true;     // ensures door knows it can open
 
-        roomActive = false;
-        conditionMet = true;
+        SceneData.storyType = "Success";
 
-        SceneData.storyType = "Sucess";
-
-        // Show message that the door is unlocked
         if (messageText != null)
             messageText.text = "Door is unlocked";
         else

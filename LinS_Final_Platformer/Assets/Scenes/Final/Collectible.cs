@@ -2,60 +2,61 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    public Transform player;           // assign your player in Inspector
-    public bool isCollected = false;
-    public Vector3 offset = new Vector3(0.5f, 0.5f, 0f); // adjust how item follows
+    public bool isHeld = false;
+    private Transform followTarget;
+    public float followSpeed = 8f;
 
-    // Keep track of the currently held item (static so only one at a time)
-    private static Collectible currentHeldItem = null;
+    private Rigidbody2D rb;
+    private Collider2D col;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if (isCollected && player != null)
+        if (isHeld && followTarget != null)
         {
-            // Smoothly follow player
-            transform.position = Vector3.Lerp(transform.position, player.position + offset, Time.deltaTime * 10f);
+            transform.position = Vector2.Lerp(
+                transform.position,
+                followTarget.position,
+                followSpeed * Time.deltaTime
+            );
         }
     }
-    public void PickUp(Transform playerTransform)
+
+    public void PickUp(Transform playerAttachPoint)
     {
-        if (player == null)
-            player = GameObject.FindWithTag("Player").transform;
+        followTarget = playerAttachPoint;
+        isHeld = true;
+        Debug.Log("Picked up " + gameObject.name);
 
-        // Drop previous item if there is one
-        if (currentHeldItem != null && currentHeldItem != this)
+        if (rb != null)
         {
-            currentHeldItem.Drop();
+            rb.bodyType = RigidbodyType2D.Kinematic;  // disables physics while held
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
         }
 
-        isCollected = true;
-        currentHeldItem = this;
-
-        // Disable collider and Rigidbody for smooth follow
-        Collider2D col = GetComponent<Collider2D>();
-        if (col != null) col.enabled = false;
-
-        Debug.Log(gameObject.name + " picked up!");
+        if (col != null)
+            col.enabled = false; // disable collisions while held
 
     }
+
     public void Drop()
     {
-        if (!isCollected) return;
+        followTarget = null;
+        isHeld = false;
 
-        isCollected = false;
-        currentHeldItem = null;
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic; // re-enable physics
+            rb.linearVelocity = Vector2.zero; // stop any leftover motion
+            rb.angularVelocity = 0f;
+        }
 
-        // Re-enable physics/collider so it stays at current position
-        Collider2D col = GetComponent<Collider2D>();
-        if (col != null) col.enabled = true;
-
-        Debug.Log(gameObject.name + " dropped!");
+        if (col != null)
+            col.enabled = true; // enable collisions again
     }
 }

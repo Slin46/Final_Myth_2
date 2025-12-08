@@ -21,17 +21,18 @@ public class Submit : MonoBehaviour
     private bool answered = false;
     public void OnSubmit()
     {
-        if (answered) return; // prevent multiple submissions
-        answered = true;
-        //remove extra spaces and lower case
+        // remove extra spaces and lowercase
         string playerText = inputField.text.Trim().ToLower();
 
-        // Check if input is empty
+        // If input is empty, just return and do nothing
         if (string.IsNullOrEmpty(playerText))
         {
             Debug.Log("Please type an answer before submitting!");
-            return; // Stop further execution
+            return;
         }
+
+        if (answered) return; // prevent multiple submissions
+        answered = true;
 
         bool isCorrect = false;
         

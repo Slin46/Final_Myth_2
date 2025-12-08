@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class KingsOrder : MonoBehaviour
 {
@@ -40,6 +38,14 @@ public class KingsOrder : MonoBehaviour
     public GameObject finalTestPanel;
     public GameObject continueArrow;
 
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject); // just in case you accidentally have multiple instances
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -62,15 +68,13 @@ public class KingsOrder : MonoBehaviour
 
     void RandomizeCurrentRoomTexts()
     {
-        if (currentRoom >= roomLimits.Length) return;
-
         int startIndex = 0;
         for (int r = 0; r < currentRoom; r++)
             startIndex += roomLimits[r];
 
         int count = roomLimits[currentRoom];
 
-        // Shuffle only the texts for the current room
+        // Shuffle only the texts for this room
         List<int> indices = new List<int>();
         for (int i = 0; i < count; i++)
             indices.Add(startIndex + i);
@@ -86,15 +90,12 @@ public class KingsOrder : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             nameOrders[startIndex + i].text = nameOrders[indices[i]].text;
-            nameOrders[startIndex + i].gameObject.SetActive(true);
+            nameOrders[startIndex + i].gameObject.SetActive(false);
         }
 
-        // hide texts not in this room
-        for (int i = 0; i < nameOrders.Length; i++)
-        {
-            if (i < startIndex || i >= startIndex + count)
-                nameOrders[i].gameObject.SetActive(false);
-        }
+        activeOrderIndex = startIndex + Random.Range(0, count);
+        PlayerPrefs.SetInt("ActiveOrderIndex", activeOrderIndex);
+        PlayerPrefs.Save();
     }
     //show the black panel
     public void ShowBlackPanel()
@@ -129,24 +130,11 @@ public class KingsOrder : MonoBehaviour
         //show the KingsOrder panel
         if (kingsOrderPanel != null) kingsOrderPanel.SetActive(true);
 
-        // Hide all orders first
         foreach (var text in nameOrders)
             text.gameObject.SetActive(false);
 
-        // Determine start and end indices for current room
-        int startIndex = 0;
-        for (int r = 0; r < currentRoom; r++)
-            startIndex += roomLimits[r];
-
-        int endIndex = startIndex + roomLimits[currentRoom];
-
-        // Pick one random index within this room's range
-        int randomIndex = Random.Range(startIndex, endIndex);
-
-        // Activate only that random text
-        nameOrders[randomIndex].gameObject.SetActive(true);
-
-        Debug.Log($"Room {currentRoom + 1} order shown: {nameOrders[randomIndex].text}");
+        // Show only the text corresponding to activeOrderIndex
+        nameOrders[activeOrderIndex].gameObject.SetActive(true);
     }
 
     //hide King's Order panel
@@ -181,10 +169,11 @@ public class KingsOrder : MonoBehaviour
     {
         HideKingsOrder();
 
-        // Show hint immediately if the condition was met
         if (conditionMet)
-            ShowHint();          // show the hint first
-            ShowKingsOrder();    // then show the King's Order
+        {
+            ShowHint();
+            ShowKingsOrder();
+        }
 
         // Then proceed to the next room
         GoToNextRoom();

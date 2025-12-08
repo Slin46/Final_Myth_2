@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,9 @@ public class MusicRoomCondition : MonoBehaviour
     private Interactable interactableScript;
     private int currentElement = 0;
 
+    // Map each element to its corresponding KingsOrder index
+    public int[] musicRoomOrderIndices = { 0, 1, 2, 3 };
+
 
     private void Awake()
     {
@@ -36,27 +40,42 @@ public class MusicRoomCondition : MonoBehaviour
     void Start()
     {
         interactableScript = FindFirstObjectByType<Interactable>();
+
         if (interactableScript == null)
             Debug.LogError("No Interactable script found in the scene!");
+
+        // Load the saved index
+        currentElement = 0;
+        int savedIndex = PlayerPrefs.GetInt("ActiveOrderIndex", -1);
+
+        if (savedIndex == -1)
+            Debug.LogError("No active order index found!");
+
+        Debug.Log("Loaded Active Order Index: " + savedIndex);
+
+        // NOW use this number to decide which element to check
+        UseActiveOrder(savedIndex);
+    }
+    private int activeOrderIndex;
+
+    void UseActiveOrder(int index)
+    {
+        activeOrderIndex = index;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //call
+
         CheckCurrentElement();
     }
 
     private void CheckCurrentElement()
     {
-        if (RoundManage.Instance == null || KingsOrder.Instance == null) return;
+        int activeOrder = activeOrderIndex;
+        Debug.Log($"Active order index: {activeOrder}, Current Element: {currentElement}");
 
-        int currentOrderIndex = KingsOrder.Instance.activeOrderIndex;
-
-        // Only check element if it matches the active order index
-        if (currentElement != currentOrderIndex) return;
-
-        switch (currentElement)
+        switch (activeOrder)
         {
             case 0:
                 // Element 0: select bookshelf2 + shelf1 and press E
@@ -67,6 +86,7 @@ public class MusicRoomCondition : MonoBehaviour
                     {
                         ElementCompleted();
                     }
+                    Debug.Log("Selected objects: " + string.Join(", ", interactableScript.selectedObjects));
                 }
                 break;
 
@@ -98,8 +118,12 @@ public class MusicRoomCondition : MonoBehaviour
                 Speaker speakerScript = speaker.GetComponent<Speaker>();
                 if (speakerScript != null && speakerScript.isGreen)
                 {
-                    Debug.Log("Speaker is green! Music Room condition is now met.");
-                    ElementCompleted();
+                    Debug.Log($"Speaker isGreen: {speakerScript.isGreen}");
+                    if (speakerScript.isGreen)
+                    {
+                        Debug.Log("Speaker is green! Calling ElementCompleted");
+                        ElementCompleted();
+                    }
                 }
                 break;
         }
@@ -109,26 +133,25 @@ public class MusicRoomCondition : MonoBehaviour
     {
         Debug.Log("Music Room Element " + currentElement + " completed.");
 
-        // Tell RoundManage that condition is met (shows door unlocked message)
+        // Tell RoundManage that the condition is met
         if (RoundManage.Instance != null)
+        {
+            Debug.Log("Calling PlayerMetCondition");
             RoundManage.Instance.PlayerMetCondition();
+        }
+        else
+        {
+            Debug.LogWarning("RoundManage.Instance is null!");
+        }
 
-        // Optional: show a debug message on the door
+        // Optional debug message for the door
         if (musicRoomDoor != null)
             Debug.Log("Door is now unlocked!");
 
-        // Reference the current active order in KingsOrder
-        if (KingsOrder.Instance != null)
-        {
-            int currentOrderIndex = KingsOrder.Instance.activeOrderIndex;
-            Debug.Log($"Music Room element {currentElement} corresponds to KingsOrder index {currentOrderIndex}");
-            // You can use currentOrderIndex if needed for hints or logic
-        }
-
         currentElement++;
 
-        // Ensure the key does not follow player to next scene
-        if (currentElement == 3 && key != null)
+        // Stop key from following player after element 2
+        if (currentElement > 2 && key != null)
         {
             Collectible keyCol = key.GetComponent<Collectible>();
             if (keyCol != null)
@@ -139,10 +162,10 @@ public class MusicRoomCondition : MonoBehaviour
     //storytype success when player collides with door 
     public void PlayerCollidedWithDoor()
     {
-        if (currentElement > 0)
+
+        if (currentElement > 0 && RoundManage.Instance != null)
         {
-            if (RoundManage.Instance != null)
-                RoundManage.Instance.PlayerMetCondition();
+            RoundManage.Instance.PlayerMetCondition();
         }
     }
 }

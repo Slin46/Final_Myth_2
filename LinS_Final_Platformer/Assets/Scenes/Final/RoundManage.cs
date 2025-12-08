@@ -88,19 +88,23 @@ public class RoundManage : MonoBehaviour
     // Call this when player meets the condition (before time runs out)
     public void PlayerMetCondition()
     {
-        roomActive = false;      // still mark room as inactive after condition met
-        conditionMet = true;     // ensures door knows it can open
+        if (conditionMet)
+        {
+            Debug.Log("Condition already met, skipping");
+            return;
+        }
+
+        roomActive = false;
+        conditionMet = true;
 
         SceneData.storyType = "Success";
 
         if (messageText != null)
             messageText.text = "Door is unlocked";
-        else
-            Debug.Log("Door is unlocked");
 
-        if (KingsOrder.Instance != null)
-            KingsOrder.Instance.OnRoomEnd(conditionMet);
+        Debug.Log("PlayerMetCondition called: Door is unlocked");
+
     }
-    
+
 
 }

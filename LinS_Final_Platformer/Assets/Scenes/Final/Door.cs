@@ -23,36 +23,32 @@ public class Door : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        // Only Transition doors trigger a scene load
         if (doorType == DoorType.Transition)
         {
-            // Check if condition is met from RoundManage or test mode
-            bool canOpen = (RoundManage.Instance != null && RoundManage.Instance.conditionMet);
-
-            if (canOpen)
+            // Instead of checking RoundManage.conditionMet, check doorType's own state
+            if (RoundManage.Instance != null)
             {
-                Debug.Log("Door unlocked! Player can proceed to StoryScene.");
-
-                // Mark the condition met in RoundManage (for message display)
-                if (RoundManage.Instance != null)
-                    RoundManage.Instance.PlayerMetCondition();
-
-                // Increment current room in PlayerPrefs for this play session
-                int nextRoom = PlayerPrefs.GetInt("CurrentRoom", 0) + 1;
-                PlayerPrefs.SetInt("CurrentRoom", nextRoom);
-                PlayerPrefs.Save();
-
-                // Pass spawn info and story type
-                SceneData.spawnPoint = spawnPointName;
-                SceneData.storyType = "Success";
-
-                // Load story scene
-                SceneManager.LoadScene(storySceneName);
+                // Ensure PlayerMetCondition() has already been called
+                if (!RoundManage.Instance.conditionMet)
+                {
+                    Debug.Log("Door is locked. Condition not met yet.");
+                    return;
+                }
             }
-            else
-            {
-                Debug.Log("Door is locked. Condition not met yet.");
-            }
+
+            Debug.Log("Door unlocked! Player can proceed to StoryScene.");
+
+            // Increment current room in PlayerPrefs
+            int nextRoom = PlayerPrefs.GetInt("CurrentRoom", 0) + 1;
+            PlayerPrefs.SetInt("CurrentRoom", nextRoom);
+            PlayerPrefs.Save();
+
+            // Pass spawn info and story type
+            SceneData.spawnPoint = spawnPointName;
+            SceneData.storyType = "Success";
+
+            // Load story scene
+            SceneManager.LoadScene(storySceneName);
         }
         else
         {

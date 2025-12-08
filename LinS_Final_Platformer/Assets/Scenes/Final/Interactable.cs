@@ -31,35 +31,39 @@ public class Interactable : MonoBehaviour
 
     public void HandleSelection()
     {
-        //left click to select item
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
 
-            if (!hit.collider) return;
+            // Get all colliders at the mouse position
+            Collider2D[] hits = Physics2D.OverlapPointAll(mouseWorldPos);
 
-            GameObject obj = hit.collider.gameObject;
+            GameObject objToSelect = null;
 
-            //can only select items tagged interactible and collectible
-            if (obj.CompareTag("Interactible") || obj.CompareTag("Collectible"))
+            // Find the top-most valid object (Interactible or Collectible)
+            foreach (var hit in hits)
             {
-                if (selectedObjects.Contains(obj))
+                if (hit.CompareTag("Interactible") || hit.CompareTag("Collectible"))
                 {
-                    //left click again to deselect
-                    selectedObjects.Remove(obj);
-                    Highlight(obj, false);
-                    Debug.Log("Deselected: " + obj.name);
+                    objToSelect = hit.gameObject;
+                    break; // take the first valid one
+                }
+            }
 
-                }
-                else
-                {
-                    //if its not selected and selectible then can select
-                    selectedObjects.Add(obj);
-                    //highlight for visual effects
-                    Highlight(obj, true);
-                    Debug.Log("Selected: " + obj.name);
-                }
+            if (objToSelect == null) return; // no valid object under cursor
+
+            // Select/deselect logic
+            if (selectedObjects.Contains(objToSelect))
+            {
+                selectedObjects.Remove(objToSelect);
+                Highlight(objToSelect, false);
+                Debug.Log("Deselected: " + objToSelect.name);
+            }
+            else
+            {
+                selectedObjects.Add(objToSelect);
+                Highlight(objToSelect, true);
+                Debug.Log("Selected: " + objToSelect.name);
             }
         }
     }
@@ -104,40 +108,38 @@ public class Interactable : MonoBehaviour
     }
     public void HandlePickup(Transform playerHoldPoint)
     {
-        if (selectedObjects.Count == 0) return;
-
-        List<GameObject> pickedUp = new List<GameObject>();
-
-        // If already holding something, drop it
+        // Drop currently held item if there is one
         if (heldItem != null)
         {
-            Collectible col = heldItem.GetComponent<Collectible>();
-            if (col != null)
-            {
-                col.Drop();
-            }
+            Collectible heldCol = heldItem.GetComponent<Collectible>();
+            if (heldCol != null)
+                heldCol.Drop();
+
             Debug.Log("Dropped: " + heldItem.name);
             heldItem = null;
         }
 
-        // Pick up the first selected collectible
-        foreach (var obj in selectedObjects)
+        // Now pick up the first selected collectible (if any)
+        if (selectedObjects.Count == 0) return;
+
+        foreach (GameObject obj in selectedObjects)
         {
             if (obj.CompareTag("Collectible"))
             {
                 Collectible col = obj.GetComponent<Collectible>();
                 if (col != null)
                 {
-                    heldItem = obj;
+                    heldItem = obj; // store currently held item
                     col.PickUp(playerHoldPoint);
                     Debug.Log("Picked Up: " + heldItem.name);
+
+                    // Deselect it
                     selectedObjects.Remove(obj);
                     Highlight(obj, false);
-                    break; // only pick up one
+                    break; // only pick up one item at a time
                 }
             }
         }
-
     }
     // Call this every frame to make held item follow the player
     public void FollowHeldItem(Transform playerHoldPoint)

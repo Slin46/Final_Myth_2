@@ -11,8 +11,15 @@ public class Collectible : MonoBehaviour
 
     private void Awake()
     {
+        // Get Rigidbody2D
         rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
+            rb = gameObject.AddComponent<Rigidbody2D>();
+
+        // Get Collider2D
         col = GetComponent<Collider2D>();
+        if (col == null)
+            col = gameObject.AddComponent<BoxCollider2D>();
     }
     void Update()
     {
@@ -28,35 +35,38 @@ public class Collectible : MonoBehaviour
 
     public void PickUp(Transform playerAttachPoint)
     {
+        if (playerAttachPoint == null) return;
+
+        // Always unparent to avoid hierarchy issues
+        transform.parent = null;
+
         followTarget = playerAttachPoint;
         isHeld = true;
+
+        // Disable physics
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+
+        // Disable collisions while held
+        col.enabled = false;
+
         Debug.Log("Picked up " + gameObject.name);
-
-        if (rb != null)
-        {
-            rb.bodyType = RigidbodyType2D.Kinematic;  // disables physics while held
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0f;
-        }
-
-        if (col != null)
-            col.enabled = false; // disable collisions while held
-
     }
 
     public void Drop()
     {
-        followTarget = null;
         isHeld = false;
+        followTarget = null;
 
-        if (rb != null)
-        {
-            rb.bodyType = RigidbodyType2D.Dynamic; // re-enable physics
-            rb.linearVelocity = Vector2.zero; // stop any leftover motion
-            rb.angularVelocity = 0f;
-        }
+        // Re-enable physics
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
 
-        if (col != null)
-            col.enabled = true; // enable collisions again
+        // Re-enable collider
+        col.enabled = true;
+
+        Debug.Log("Dropped " + gameObject.name);
     }
 }

@@ -1,9 +1,19 @@
+using System.Collections;
 using UnityEngine;
 
 public class BookInteractible : MonoBehaviour, IInteractible
 {
     public GameObject key; // assign the key in inspector
+    public float deactivateDuration = 0.5f;
 
+    private Collider2D col;
+    private SpriteRenderer sr;
+
+    private void Awake()
+    {
+        col = GetComponent<Collider2D>();
+        sr = GetComponent<SpriteRenderer>();
+    }
     public void Interact()
     {
         if (key != null)
@@ -19,20 +29,22 @@ public class BookInteractible : MonoBehaviour, IInteractible
 
             Debug.Log("key revealed");
         }
-
-        // Deactivate the book instead of destroying it
-        gameObject.SetActive(false);
-        Debug.Log("book deactivated");
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
         
+        // Temporarily deactivate the book
+        StartCoroutine(TemporarilyDeactivate());
     }
-
-    // Update is called once per frame
-    void Update()
+    private IEnumerator TemporarilyDeactivate()
     {
-        
+        // Disable interaction and visibility
+        if (col != null) col.enabled = false;
+        if (sr != null) sr.enabled = false;
+
+        yield return new WaitForSeconds(deactivateDuration);
+
+        // Re-enable interaction and visibility
+        if (col != null) col.enabled = true;
+        if (sr != null) sr.enabled = true;
+
+        Debug.Log("Book reactivated after delay");
     }
 }

@@ -60,6 +60,7 @@ public class KingsOrder : MonoBehaviour
         HideBlackPanel();
         HideKingsOrder();
         HideHint();
+        Debug.Log("hint hidden at start");
 
         // Randomize only if we're not past last room
         if (currentRoom < roomLimits.Length)
@@ -74,28 +75,26 @@ public class KingsOrder : MonoBehaviour
 
         int count = roomLimits[currentRoom];
 
-        // Shuffle only the texts for this room
-        List<int> indices = new List<int>();
-        for (int i = 0; i < count; i++)
-            indices.Add(startIndex + i);
-
-        for (int i = 0; i < indices.Count; i++)
-        {
-            int rand = Random.Range(i, indices.Count);
-            int temp = indices[i];
-            indices[i] = indices[rand];
-            indices[rand] = temp;
-        }
-
-        for (int i = 0; i < count; i++)
-        {
-            nameOrders[startIndex + i].text = nameOrders[indices[i]].text;
-            nameOrders[startIndex + i].gameObject.SetActive(false);
-        }
-
+        // Pick one active order index randomly for this room
         activeOrderIndex = startIndex + Random.Range(0, count);
+
+        // Save it for the next scene
         PlayerPrefs.SetInt("ActiveOrderIndex", activeOrderIndex);
         PlayerPrefs.Save();
+
+        Debug.Log($"KingsOrder randomized. Room {currentRoom} activeOrderIndex = {activeOrderIndex}");
+
+        // Show only the selected text
+        for (int i = 0; i < count; i++)
+        {
+            nameOrders[startIndex + i].gameObject.SetActive(i == (activeOrderIndex - startIndex));
+        }
+        // Hide all order texts initially
+        foreach (var text in nameOrders)
+            text.gameObject.SetActive(false);
+
+        // Show only the active order text when ready
+        nameOrders[activeOrderIndex].gameObject.SetActive(false); // initially hide
     }
     //show the black panel
     public void ShowBlackPanel()
@@ -125,7 +124,6 @@ public class KingsOrder : MonoBehaviour
         //show black panel, hide hint, show kings order panel
         ShowBlackPanel();
         Debug.Log("Black panel activated");
-        HideHint();
 
         //show the KingsOrder panel
         if (kingsOrderPanel != null) kingsOrderPanel.SetActive(true);
@@ -133,7 +131,7 @@ public class KingsOrder : MonoBehaviour
         foreach (var text in nameOrders)
             text.gameObject.SetActive(false);
 
-        // Show only the text corresponding to activeOrderIndex
+        /// Show only the active order text
         nameOrders[activeOrderIndex].gameObject.SetActive(true);
     }
 
@@ -147,37 +145,61 @@ public class KingsOrder : MonoBehaviour
     //show hint for the current room
     public void ShowHint()
     {
+        HideKingsOrder ();
+
+        Debug.Log("show hint");
         ShowBlackPanel();
 
-        // Only show the TMP_Text for the current room
-        for (int i = 0; i < roomHints.Length; i++)
+        if (currentRoom >= 0)
         {
-            roomHints[i].gameObject.SetActive(i == currentRoom);
+            for (int i = 0; i < roomHints.Length; i++)
+            {
+                if (roomHints[i] != null)
+                    roomHints[i].gameObject.SetActive(i == currentRoom);
+            }
         }
 
         //show the hint panel parent
         if (hintPanel != null) hintPanel.SetActive(true);
+        Debug.Log("hint panel set active");
     }
 
     //hide hint panel
     public void HideHint()
     {
         if (hintPanel != null) hintPanel.SetActive(false);
+        Debug.Log("HideHint called");
+    }
+    // Called when the player clicks the continue arrow after seeing the hint
+    public void OnContinueArrowClicked()
+    {
+        HideHint();
+        if (continueArrow != null)
+            continueArrow.SetActive(false);
+
+        ShowKingsOrder();
     }
 
     public void OnRoomEnd(bool conditionMet)
     {
+        Debug.Log("OnRoomEnd called");
         HideKingsOrder();
 
         if (conditionMet)
         {
+            // Show hint panel and wait for continue arrow
             ShowHint();
+            if (continueArrow != null)
+                continueArrow.SetActive(true);
+            Debug.Log("Hint shown");
+        }
+        else
+        {
+            // If condition not met, just show KingsOrder again
             ShowKingsOrder();
         }
-
-        // Then proceed to the next room
-        GoToNextRoom();
     }
+   
 
     public void GoToNextRoom()
     {

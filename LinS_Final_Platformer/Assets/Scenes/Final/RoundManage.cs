@@ -75,6 +75,7 @@ public class RoundManage : MonoBehaviour
             {
                 KingsOrder.Instance.currentRoom = nextRoom;
                 KingsOrder.Instance.OnRoomEnd(false); // will skip hint since condition not met
+
             }
             SceneData.spawnPoint = "Spawn_" + (char)('A' + nextRoom);
 
@@ -88,21 +89,15 @@ public class RoundManage : MonoBehaviour
     // Call this when player meets the condition (before time runs out)
     public void PlayerMetCondition()
     {
-        if (conditionMet)
-        {
-            Debug.Log("Condition already met, skipping");
-            return;
-        }
-
+        if (conditionMet) return;
         roomActive = false;
         conditionMet = true;
-
+     
         SceneData.storyType = "Success";
+        if (messageText != null) messageText.text = "Door is unlocked!";
+        Debug.Log("RoundManage: PlayerMetCondition called. Door unlocked.");
 
-        if (messageText != null)
-            messageText.text = "Door is unlocked";
-
-        Debug.Log("PlayerMetCondition called: Door is unlocked");
+        KingsOrder.Instance.OnRoomEnd(true);
 
     }
 

@@ -17,6 +17,7 @@ public class Continue : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject continueArrow;
     public KingsOrder kingsOrder;
+    public bool Hint = false;
     public string nextSceneName = "GameScene";
 
     [Header("Scene Data")]
@@ -59,6 +60,11 @@ public class Continue : MonoBehaviour
             kingsOrder.HideBlackPanel();
             kingsOrder.HideKingsOrder();
             kingsOrder.HideHint();
+            
+        }
+        if (kingsOrder.currentRoom != 0)
+        {
+            dialogueFinished = true;
         }
 
     }
@@ -76,10 +82,17 @@ public class Continue : MonoBehaviour
         {
             ContinueDialogue();
         }
+
+        else if (kingsOrder.currentRoom !=0 && RoundManage.Instance.conditionMet && !Hint)
+        {
+                Hint = true;
+                ShowHintPanel();
+        }
         else if (!panelShown)
         {
             //show panel after dialogue finishes
             ShowPanel();
+
         }
         else
         {
@@ -96,20 +109,43 @@ public class Continue : MonoBehaviour
             index++;
             dialogueText.text = dialogueLines[index];
         }
-        else
+        if (index == dialogueLines.Length - 1)
         {
             //or else finish dialogue is true
             dialogueFinished = true;
-            //show panel immediately
-            ShowPanel();
+            return;
             
         }
     }
 
-    void ShowPanel()
+    void ShowHintPanel()
     {
         //activate phone sprite
         if (phoneSprite != null) phoneSprite.SetActive(true);
+
+
+        //activate King’s Order panel with black panel
+        if (kingsOrder != null)
+        {
+            //show black panel and kings order
+            kingsOrder.ShowHint();
+            Debug.Log("Hint called");
+
+            if (continueArrow != null && kingsOrder.finalTestPanel != null && kingsOrder.finalTestPanel.activeSelf)
+                continueArrow.SetActive(false);
+        }
+
+        //hide dialogue box
+        if (dialogueBox != null) dialogueBox.SetActive(false);
+    }
+
+    void ShowPanel()
+    {
+        kingsOrder.HideHint();
+
+        //activate phone sprite
+        if (phoneSprite != null) phoneSprite.SetActive(true);
+
 
         //activate King’s Order panel with black panel
         if (kingsOrder != null)

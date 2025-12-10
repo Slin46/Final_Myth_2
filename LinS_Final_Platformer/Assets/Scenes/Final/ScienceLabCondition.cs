@@ -130,7 +130,7 @@ public class ScienceLabCondition : MonoBehaviour
                     if (Condition.Instance.SelectedExactly(window1, window2))
                         Condition.Instance.OnElementCompleted(activeOrder);
 
-                    Debug.Log("Checking WinnieOrder objects.");
+                    Debug.Log("Checking NoahOrder objects.");
                 }
                 break;
 

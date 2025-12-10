@@ -14,22 +14,23 @@ public class MenuButtons : MonoBehaviour
 
     public void PLAY()
     {
-        // Clear PlayerPrefs
+        // 1. Clear PlayerPrefs
         PlayerPrefs.DeleteAll();
 
-        // Reset static scene data
+        // 2. Reset static data
         SceneData.spawnPoint = "";
         SceneData.storyType = "";
+        SceneData.failedOrderID = -1;
 
-        // Reset other singletons if necessary
         if (KingsOrder.Instance != null)
-        {
             KingsOrder.Instance.currentRoom = 0;
-        }
+
         if (RoundManage.Instance != null)
-        {
             RoundManage.Instance.conditionMet = false;
-        }
+
+        NPCSaveData manager = FindFirstObjectByType<NPCSaveData>();
+        if (manager != null)
+            Destroy(manager.gameObject);
 
         // Load the first scene
         SceneManager.LoadScene(firstSceneName);

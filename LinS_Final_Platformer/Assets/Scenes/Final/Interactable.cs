@@ -7,6 +7,8 @@ public class Interactable : MonoBehaviour
     public Camera cam;
     //list of all objects 
     public List<GameObject> selectedObjects = new List<GameObject>();
+    //keep in track of the order of selectedobjects
+    public List<GameObject> selectedObjectsInOrder = new List<GameObject>();
 
     //assign player transform here
     public Transform playerHoldPoint;
@@ -35,12 +37,12 @@ public class Interactable : MonoBehaviour
         {
             Vector2 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-            // Get all colliders at the mouse position
+            //get all colliders at the mouse position
             Collider2D[] hits = Physics2D.OverlapPointAll(mouseWorldPos);
 
             GameObject objToSelect = null;
 
-            // Find the top-most valid object (Interactible or Collectible)
+            //find the top-most valid object (Interactible or Collectible)
             foreach (var hit in hits)
             {
                 if (hit.CompareTag("Interactible") || hit.CompareTag("Collectible"))
@@ -52,16 +54,20 @@ public class Interactable : MonoBehaviour
 
             if (objToSelect == null) return; // no valid object under cursor
 
-            // Select/deselect logic
+            //select/deselect obj
             if (selectedObjects.Contains(objToSelect))
             {
+                //deselect to remove from both lists
                 selectedObjects.Remove(objToSelect);
+                selectedObjectsInOrder.Remove(objToSelect);
                 Highlight(objToSelect, false);
                 Debug.Log("Deselected: " + objToSelect.name);
             }
             else
             {
+                //select to add to both lists
                 selectedObjects.Add(objToSelect);
+                selectedObjectsInOrder.Add(objToSelect); //this keeps the click order
                 Highlight(objToSelect, true);
                 Debug.Log("Selected: " + objToSelect.name);
             }

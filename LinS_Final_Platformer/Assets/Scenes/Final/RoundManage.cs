@@ -62,8 +62,10 @@ public class RoundManage : MonoBehaviour
             roomActive = false;
             conditionMet = false;
 
+            SceneData.failedOrderID = PlayerPrefs.GetInt("ActiveOrderIndex");
             // Set story type for fail
             SceneData.storyType = "Fail";
+
 
             // Increment current room index for persistence
             int nextRoom = PlayerPrefs.GetInt("CurrentRoom", 0) + 1;

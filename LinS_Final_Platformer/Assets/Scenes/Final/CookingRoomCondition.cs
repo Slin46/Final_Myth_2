@@ -12,6 +12,7 @@ public class CookingRoomCondition : MonoBehaviour
 
     [Header("Element 9 objects")]
     public GameObject redpot;
+    public GameObject reddrink;
     public GameObject redtrash;
 
     [Header("Element 10 objects")]
@@ -36,6 +37,8 @@ public class CookingRoomCondition : MonoBehaviour
 
     public bool redpotPickedUp = false;
     public bool redpotThrown = false;
+    public bool reddrinkPickedUp = false;
+    public bool reddrinkThrown = false;
 
     public bool key2PickedUp = false;
     public bool key2Unlock = false;
@@ -132,23 +135,40 @@ public class CookingRoomCondition : MonoBehaviour
                             redpotPickedUp = true;
                             Debug.Log("redpot picked up!");
                         }
+
+                    }
+                    // Reddink pickup (can only pick once)
+                    else if (!reddrinkPickedUp)
+                    {
+                        Collectible drinkCol = reddrink.GetComponent<Collectible>();
+                        if (drinkCol != null && drinkCol.isHeld)
+                        {
+                            reddrinkPickedUp = true;
+                            Debug.Log("reddrink picked up!");
+                        }
                     }
 
                     // STEP 2 — Throw into trash with E
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        // Player must have already picked the redpot…
-                        if (redpotPickedUp)
+                        // Redpot throw (only if picked up)
+                        if (redpotPickedUp && !redpotThrown && Condition.Instance.SelectedExactly(redtrash))
                         {
-                            if (Condition.Instance.SelectedExactly(redtrash))
-                            {
-                                redpotThrown = true;
-                                Debug.Log("redpot thrown into redtrash!");
+                            redpotThrown = true;
+                            Debug.Log("redpot thrown into redtrash!");
+                        }
 
-                                // Final completion trigger
+                        // Reddrink throw (only if picked up)
+                        if (reddrinkPickedUp && !reddrinkThrown && Condition.Instance.SelectedExactly(redtrash))
+                        {
+                            reddrinkThrown = true;
+                            Debug.Log("reddrink thrown into redtrash!");
+
+                            // Final completion trigger
+                            if (redpotThrown) // ensure redpot sequence completed first
+                            {
                                 Condition.Instance.OnElementCompleted(activeOrder);
                             }
-                            
                         }
                     }
                 }

@@ -352,7 +352,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"941719"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -545,9 +545,10 @@ MonoBehaviour:
   hintTitle: {fileID: 1351563488}
   roomHints:
   - {fileID: 745421736}
+  - {fileID: 745421736}
   - {fileID: 605630446}
   - {fileID: 33514546}
-  - {fileID: 745421736}
+  - {fileID: 1445763180}
   currentRoom: 0
   finalTestPanel: {fileID: 1014495724}
   continueArrow: {fileID: 2102329675}
@@ -640,6 +641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 116542872}
   - component: {fileID: 116542873}
+  - component: {fileID: 116542874}
   m_Layer: 0
   m_Name: Rifa
   m_TagString: Untagged
@@ -718,6 +720,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &116542874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116542871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 11
 --- !u!1 &119310142
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +967,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from poison
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1038,6 +1054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 184532195}
   - component: {fileID: 184532196}
+  - component: {fileID: 184532197}
   m_Layer: 0
   m_Name: Noah
   m_TagString: Untagged
@@ -1116,6 +1133,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &184532197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184532194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 7
 --- !u!1 &203197354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 203197355}
   - component: {fileID: 203197356}
+  - component: {fileID: 203197357}
   m_Layer: 0
   m_Name: Lay
   m_TagString: Untagged
@@ -1204,6 +1236,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &203197357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203197354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 3
 --- !u!1 &205993328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1457,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: King's Order
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1549,8 +1595,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1644,7 +1690,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1727,8 +1773,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1822,7 +1868,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2049,6 +2095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 295419138}
   - component: {fileID: 295419139}
+  - component: {fileID: 295419140}
   m_Layer: 0
   m_Name: Fan
   m_TagString: Untagged
@@ -2127,6 +2174,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &295419140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295419137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 9
 --- !u!1 &302433653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2186,7 +2247,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from drowning
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2324,8 +2385,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2419,7 +2480,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2500,7 +2561,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Rules
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2587,6 +2648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 397438610}
   - component: {fileID: 397438611}
+  - component: {fileID: 397438612}
   m_Layer: 0
   m_Name: Boo
   m_TagString: Untagged
@@ -2665,6 +2727,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &397438612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397438609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 6
 --- !u!1 &403142330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2743,8 +2819,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2849,6 +2925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 425255561}
   - component: {fileID: 425255562}
+  - component: {fileID: 425255563}
   m_Layer: 0
   m_Name: Mili
   m_TagString: Untagged
@@ -2927,6 +3004,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &425255563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425255560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 10
 --- !u!1 &449741988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2986,7 +3077,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from stress
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3122,8 +3213,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lay
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3217,7 +3308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3559,7 +3650,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"All see the gold upon his head, he faces straight ahead"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4034,8 +4125,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4129,7 +4220,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4210,7 +4301,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from losing something
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4346,7 +4437,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die if the room is bright
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4569,8 +4660,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Ivan
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4664,7 +4755,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4747,8 +4838,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4842,7 +4933,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4923,7 +5014,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '"Every order whispers through him; his name will guide the path"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5536,8 +5627,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Winnie
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5631,7 +5722,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5714,8 +5805,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5809,7 +5900,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5890,7 +5981,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from touching severe heat
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6064,6 +6155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 897305095}
   - component: {fileID: 897305096}
+  - component: {fileID: 897305097}
   m_Layer: 0
   m_Name: Chan
   m_TagString: Untagged
@@ -6142,6 +6234,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &897305097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897305094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 5
 --- !u!1 &904144074
 GameObject:
   m_ObjectHideFlags: 0
@@ -6248,8 +6354,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6343,7 +6449,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6685,8 +6791,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hani
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6780,7 +6886,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6812,6 +6918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1002592574}
   - component: {fileID: 1002592573}
+  - component: {fileID: 1002592575}
   m_Layer: 0
   m_Name: Hani
   m_TagString: Untagged
@@ -6890,6 +6997,20 @@ Transform:
   - {fileID: 957163126}
   m_Father: {fileID: 807475706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002592575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002592572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 4
 --- !u!1 &1005675564
 GameObject:
   m_ObjectHideFlags: 0
@@ -7036,7 +7157,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Home
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7490,8 +7611,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Type the king's order here...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7776,8 +7897,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7871,7 +7992,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8039,8 +8160,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Submit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8105,7 +8226,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1062605540
@@ -8177,7 +8298,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8400,7 +8521,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from smoke
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8623,7 +8744,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from the bookshelf
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8759,7 +8880,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from something sharp
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8895,8 +9016,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8961,7 +9082,7 @@ MonoBehaviour:
   m_margin: {x: 0.4266281, y: -1.2626219, z: -3.2627182, w: -1.8705225}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1201974894
@@ -9375,6 +9496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1249673687}
   - component: {fileID: 1249673686}
+  - component: {fileID: 1249673688}
   m_Layer: 0
   m_Name: Oliver
   m_TagString: Untagged
@@ -9453,6 +9575,20 @@ Transform:
   - {fileID: 1724570466}
   m_Father: {fileID: 807475706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1249673688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249673685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 0
 --- !u!1 &1273493908
 GameObject:
   m_ObjectHideFlags: 0
@@ -11361,8 +11497,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11456,7 +11592,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11685,6 +11821,7 @@ RectTransform:
   - {fileID: 745421735}
   - {fileID: 605630445}
   - {fileID: 33514545}
+  - {fileID: 1445763179}
   m_Father: {fileID: 694462501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -11714,7 +11851,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hint
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -11973,7 +12110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -681.4615, y: 236.30103}
+  m_AnchoredPosition: {x: -681.4615, y: 238}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1364189668
@@ -12101,6 +12238,142 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1445763178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1445763179}
+  - component: {fileID: 1445763181}
+  - component: {fileID: 1445763180}
+  m_Layer: 5
+  m_Name: Hint4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1445763179
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445763178}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1351563487}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -51.65225}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1445763180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445763178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '"He point to the crown, a name once father to an empire"'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4279374517
+  m_fontColor: {r: 0.7106918, g: 0.06928116, b: 0.06928116, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 26
+  m_fontSizeBase: 26
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -12.102661, y: 0, z: -11.885712, w: -156.18527}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 1
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1445763181
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445763178}
+  m_CullTransparentMesh: 1
 --- !u!1 &1446516260
 GameObject:
   m_ObjectHideFlags: 0
@@ -12160,7 +12433,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from a burn
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12247,6 +12520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1451251779}
   - component: {fileID: 1451251780}
+  - component: {fileID: 1451251781}
   m_Layer: 0
   m_Name: Eagan
   m_TagString: Untagged
@@ -12325,6 +12599,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1451251781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451251778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 13
 --- !u!1 &1463263097
 GameObject:
   m_ObjectHideFlags: 0
@@ -12412,6 +12700,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1477715738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477715740}
+  - component: {fileID: 1477715739}
+  m_Layer: 0
+  m_Name: NPCSaveDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1477715739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477715738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b003267107311948b55a9cca32bc2ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1477715740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477715738}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.3845, y: 0.35347, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1524155381
 GameObject:
   m_ObjectHideFlags: 0
@@ -12659,6 +12991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1559856938}
   - component: {fileID: 1559856937}
+  - component: {fileID: 1559856939}
   m_Layer: 0
   m_Name: Winnie
   m_TagString: Untagged
@@ -12737,6 +13070,20 @@ Transform:
   - {fileID: 827133330}
   m_Father: {fileID: 807475706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1559856939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559856936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 1
 --- !u!1 &1586094197
 GameObject:
   m_ObjectHideFlags: 0
@@ -12747,6 +13094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1586094198}
   - component: {fileID: 1586094199}
+  - component: {fileID: 1586094200}
   m_Layer: 0
   m_Name: Jelly
   m_TagString: Untagged
@@ -12825,6 +13173,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1586094200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586094197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 2
 --- !u!1 &1590328014
 GameObject:
   m_ObjectHideFlags: 0
@@ -12835,6 +13197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1590328016}
   - component: {fileID: 1590328015}
+  - component: {fileID: 1590328017}
   m_Layer: 0
   m_Name: Ivan
   m_TagString: Untagged
@@ -12913,6 +13276,20 @@ Transform:
   - {fileID: 719656197}
   m_Father: {fileID: 807475706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1590328017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590328014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 14
 --- !u!1 &1595587421
 GameObject:
   m_ObjectHideFlags: 0
@@ -13050,7 +13427,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from the piano
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -13188,8 +13565,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13283,7 +13660,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13451,8 +13828,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Ciel
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13546,7 +13923,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13759,7 +14136,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die if the door stays locked
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -13895,7 +14272,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die from being trapped in an enclosed space
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -14179,8 +14556,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Oliver
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14274,7 +14651,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14442,7 +14819,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will bleed to death
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -14529,6 +14906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1771275464}
   - component: {fileID: 1771275463}
+  - component: {fileID: 1771275465}
   m_Layer: 0
   m_Name: Ciel
   m_TagString: Untagged
@@ -14607,6 +14985,20 @@ Transform:
   - {fileID: 1646448445}
   m_Father: {fileID: 807475706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1771275465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771275462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 8
 --- !u!1 &1797084173
 GameObject:
   m_ObjectHideFlags: 0
@@ -14902,8 +15294,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You are the next king. Enter your order to end the game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
+  m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14968,7 +15360,7 @@ MonoBehaviour:
   m_margin: {x: -12.102661, y: 0, z: -11.885712, w: -115.9704}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1807940609
@@ -15163,6 +15555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1928512665}
   - component: {fileID: 1928512664}
+  - component: {fileID: 1928512666}
   m_Layer: 0
   m_Name: Jasmine
   m_TagString: Untagged
@@ -15215,7 +15608,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -7943720702334105097, guid: b3d1663ee8174c34d9aefa997d2ea987, type: 3}
-  m_Color: {r: 0.3207547, g: 0.18307225, b: 0.22959873, a: 1}
+  m_Color: {r: 0.6348684, g: 0.67295593, b: 0.38303462, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -15241,6 +15634,20 @@ Transform:
   - {fileID: 722104030}
   m_Father: {fileID: 807475706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1928512666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928512663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2377a4b9f5c8d94478862114c5b07cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redXPrefab: {fileID: 6375338291210047633, guid: 8f309e887c897744db5a273abb1b72e2, type: 3}
+  orderID: 12
 --- !u!1 &1929103023
 GameObject:
   m_ObjectHideFlags: 0
@@ -15387,7 +15794,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Someone will die if the speaker is too loud
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_sharedMaterial: {fileID: 143925390133398303, guid: ad05bb58976673e4e97079acb9989d97, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -15869,7 +16276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 828, y: 104}
+  m_AnchoredPosition: {x: 828, y: 133}
   m_SizeDelta: {x: 1272, y: 716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2145137720
@@ -15921,3 +16328,4 @@ SceneRoots:
   - {fileID: 1524155382}
   - {fileID: 1555669654}
   - {fileID: 1696365282}
+  - {fileID: 1477715740}

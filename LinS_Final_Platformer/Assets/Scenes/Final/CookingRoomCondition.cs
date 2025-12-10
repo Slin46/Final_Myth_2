@@ -1,4 +1,3 @@
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,7 +17,7 @@ public class CookingRoomCondition : MonoBehaviour
     public GameObject key2;
     public GameObject lock1;
 
-    [Header("Element 11 objects")]
+    [Header("Element 3 objects - speaker")]
     public GameObject pot;
     public GameObject trash2;
 
@@ -33,16 +32,6 @@ public class CookingRoomCondition : MonoBehaviour
 
     public bool knifePickedUp = false;
     public bool knifeThrown = false;
-
-    public bool redpotPickedUp = false;
-    public bool redpotThrown = false;
-
-    public bool key2PickedUp = false;
-    public bool key2Unlock = false;
-
-    public bool potPickedUp = false;
-    public bool potThrown = false;
-
 
 
     private void Awake()
@@ -106,113 +95,11 @@ public class CookingRoomCondition : MonoBehaviour
                         // Player must have already picked the knife…
                         if (knifePickedUp)
                         {
-                            if (Condition.Instance.SelectedExactly(trash))
+                            // …and must currently be targeting or selecting the trash
+                            if (interactableScript.selectedObjects.Contains(trash))
                             {
                                 knifeThrown = true;
                                 Debug.Log("Knife thrown into trash!");
-
-                                // Final completion trigger
-                                Condition.Instance.OnElementCompleted(activeOrder);
-                            }
-                                
-                        }
-                    }
-                }
-                break;
-
-            case 9: //FanOrder (poision)
-                {
-                    // STEP 1 — Pickup with Q
-                    if (Input.GetKeyDown(KeyCode.Q))
-                    {
-                        Collectible col = redpot.GetComponent<Collectible>();
-
-                        if (col != null && col.isHeld)
-                        {
-                            redpotPickedUp = true;
-                            Debug.Log("redpot picked up!");
-                        }
-                    }
-
-                    // STEP 2 — Throw into trash with E
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        // Player must have already picked the redpot…
-                        if (redpotPickedUp)
-                        {
-                            if (Condition.Instance.SelectedExactly(redtrash))
-                            {
-                                redpotThrown = true;
-                                Debug.Log("redpot thrown into redtrash!");
-
-                                // Final completion trigger
-                                Condition.Instance.OnElementCompleted(activeOrder);
-                            }
-                            
-                        }
-                    }
-                }
-                break;
-
-            case 10: //MiliOrder (suffocate from smoke)
-                {
-                    // STEP 1 — Pickup with Q
-                    if (Input.GetKeyDown(KeyCode.Q))
-                    {
-                        Collectible col = key2.GetComponent<Collectible>();
-
-                        if (col != null && col.isHeld)
-                        {
-                            key2PickedUp = true;
-                            Debug.Log("key2 picked up!");
-                        }
-                    }
-
-                    // STEP 2 — unlock lock with E
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        // Player must have already picked the key2…
-                        if (key2PickedUp)
-                        {
-                            // …and must currently be targeting or selecting the lock
-                            if (Condition.Instance.SelectedExactly(lock1))
-                            {
-                                key2Unlock = true;
-                                Debug.Log("key2 unlock lock1!");
-
-                                // Final completion trigger
-                                Condition.Instance.OnElementCompleted(activeOrder);
-                            }
-                        }
-                    }
-                }
-                break;
-
-            case 11: // Rifa (severe heat)
-                {
-                    // STEP 1 — Pickup with Q
-                    if (Input.GetKeyDown(KeyCode.Q))
-                    {
-                        Collectible col = pot.GetComponent<Collectible>();
-
-                        if (col != null && col.isHeld)
-                        {
-                            potPickedUp = true;
-                            Debug.Log("pot picked up!");
-                        }
-                    }
-
-                    // STEP 2 — Throw into trash with E
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        // Player must have already picked the pot…
-                        if (potPickedUp)
-                        {
-                            // …and must currently be targeting or selecting the trash
-                            if (Condition.Instance.SelectedExactly(trash2))
-                            {
-                                potThrown = true;
-                                Debug.Log("pot thrown into trash2!");
 
                                 // Final completion trigger
                                 Condition.Instance.OnElementCompleted(activeOrder);
